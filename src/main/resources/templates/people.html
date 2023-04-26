@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Activity Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="w-screen h-screen bg-[#98ee00] overflow-hidden">
+  <div class="w-full h-[10%] bg-[#1c004b] text-[#98ee00] text-[40px] font-bold flex justify-center items-center">
+    <div class="text-white text-[15px] relative -left-[32%]"><a href="/">BACK</a></div>
+    Online Activity Tracker
+  </div>
+  <div class="w-full h-[90%] text-[#1c004b]">
+    <div class="absolute left-1/2 -translate-x-1/2 top-[20%]">
+      <table class="text-center">
+        <thead class="bg-[#1c004b] text-[#98ee00] font-bold font-serif">
+          <tr>
+            <th class="border-x-2 border-l-[#1c004b] border-r-[#98ee00] w-24">ID</th>
+            <th class="border-r-2 border-[#98ee00] w-48">Name</th>
+            <th class="border-r-2 border-[#98ee00] w-40">Total Hours</th>
+            <th class="w-64 border-r-2 border-[#1c004b]">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="text-black font-serif">
+        <tr th:each = "person: ${people}" class="h-16 border-b-2 border-[#1c004b]">
+          <td th:text = "${person.id}" class="border-x-2 border-[#1c004b]"></td>
+          <td th:text = "${person.name}" class="border-r-2 border-[#1c004b]"></td>
+          <td th:text = "${person.hours}" class="border-r-2 border-[#1c004b]"></td>
+          <td  class="border-r-2 border-[#1c004b]">
+            <div id="delete" class="w-full h-full flex flex-row justify-evenly">
+              <a th:href = "@{/people/update/{id}(id=${person.id})}">
+                <div class="border-2 border-black w-[80px] h-[40px] bg-green-300 rounded-2xl flex justify-center items-center"><p>Update</p></div>
+              </a>
+                <a th:href="@{/people/{id}(id=${person.id})}"><div id="del" class="border-2 border-black w-[80px] h-[40px] bg-red-300 rounded-2xl flex justify-center items-center"><p>Delete</p></div>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="absolute right-[20px]"><a th:href="@{/people/new}"><div class="mt-4 w-[80px] h-[40px] bg-[#1c004b] text-white rounded-xl flex items-center justify-center">Add User</div></a></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
