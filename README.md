@@ -11,3 +11,5 @@ thymeleaf used for UI creation.
 PostgreSQL database is used to store details.
 
 Tailwind CSS is used for styling.
+
+YouTube : 'https://youtu.be/6wE-SZE0eT8'
